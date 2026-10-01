@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sistema Solar | Projecto Espacial</title>
+    <meta name="description" content="Explore o Sistema Solar: Sol e oito planetas com informação educativa.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fontes (Exo 2 para títulos, Inter para texto) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Estilos globais e estilos específicos desta página -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/solar-system.css">
+</head>
+
+<!-- class="solar" bloqueia o scroll e ocupa o ecrã todo; data-page marca o link activo -->
+<body class="solar" data-page="sistema-solar.html">
+
+    <!-- Fundo de estrelas (desenhado por main.js) -->
+    <canvas id="stars" aria-hidden="true"></canvas>
+
+    <!-- VISTA PRINCIPAL: o Sol fica no centro do #stage;
+         as órbitas e os planetas são criados por solar-system.js -->
+    <div id="view">
+        <div id="stage">
+
+            <!-- Sol: botão com várias camadas visuais (brilho, raios, halo, superfície, plasma) -->
+            <button id="sun" data-id="sun" aria-label="Sol">
+                <span class="sunlayer s-glow"></span>
+                <span class="sunlayer s-rays"></span>
+                <span class="sunlayer s-halo"></span>
+                <span class="sunlayer s-body"></span>
+                <span class="sunlayer s-plasma"></span>
+            </button>
+
+        </div>
+    </div>
+
+    <!-- BARRA SUPERIOR: voltar ao início + controlos -->
+    <div id="top" class="hud">
+        <a class="back" href="index.html">
+            <i class="fa-solid fa-arrow-left"></i> <span>Início</span>
+        </a>
+
+        <div id="controls" role="toolbar" aria-label="Controlos">
+            <button id="bOut" aria-label="Afastar"><i class="fa-solid fa-minus"></i></button>
+            <button id="bIn" aria-label="Aproximar"><i class="fa-solid fa-plus"></i></button>
+            <button id="bPause" aria-label="Pausar movimento" aria-pressed="false"><i class="fa-solid fa-pause"></i></button>
+            <button id="bReset" aria-label="Repor vista"><i class="fa-solid fa-rotate"></i></button>
+            <button id="bMoon" aria-label="Activar modo nocturno" aria-pressed="false"><i class="fa-solid fa-moon"></i></button>
+            <button id="bFull" aria-label="Ecrã inteiro"><i class="fa-solid fa-expand"></i></button>
+            <button id="bHelp" aria-label="Ajuda" aria-expanded="false" aria-controls="help"><i class="fa-solid fa-circle-info"></i></button>
+        </div>
+    </div>
+
+    <!-- Caixa de ajuda (aparece ao clicar no botão de info) -->
+    <div id="help" class="hud">
+        Clique num planeta ou no Sol para ver a informação. Clique na Lua, junto à Terra, para ver a
+        informação e activar o modo nocturno (clique outra vez para o desligar).
+        Use ← → para mudar de planeta e Esc para fechar.
+    </div>
+
+    <!-- Mensagens discretas de orientação -->
+    <p id="hint" class="hud">Seleccione um corpo celeste para explorar.</p>
+    <p id="scale">Representação visual — tamanhos e distâncias não estão à escala real.</p>
+
+    <!-- Barra de navegação entre corpos celestes (botões criados por solar-system.js) -->
+    <nav id="planetnav" class="hud" aria-label="Planetas"></nav>
+
+    <!-- PAINEL DE INFORMAÇÃO: escondido até se seleccionar um corpo celeste.
+         Os textos são preenchidos por selectPlanet() com os dados de planets.js -->
+    <aside id="panel" aria-hidden="true" aria-label="Informação" tabindex="-1">
+
+        <!-- Nome, tipo e botão de fechar -->
+        <header>
+            <div>
+                <h2 id="pn"></h2>
+                <span id="pt"></span>
+            </div>
+            <button id="pClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+        </header>
+
+        <!-- Descrição -->
+        <p class="desc" id="pd"></p>
+
+        <!-- Dados: luas, gravidade e distância à Terra -->
+        <dl>
+            <div>
+                <dt><i class="fa-solid fa-moon"></i>LUAS</dt>
+                <dd id="pm"></dd>
+            </div>
+            <div>
+                <dt><i class="fa-solid fa-weight-hanging"></i>GRAVIDADE</dt>
+                <dd id="pg"></dd>
+            </div>
+            <div>
+                <dt><i class="fa-solid fa-ruler-horizontal"></i>DISTÂNCIA DA TERRA</dt>
+                <dd id="pk"></dd>
+            </div>
+        </dl>
+
+        <!-- Rodapé do painel: anterior, fonte dos dados e seguinte -->
+        <footer>
+            <button id="pPrev" aria-label="Anterior"><i class="fa-solid fa-arrow-left"></i></button>
+            <span id="ps"></span>
+            <button id="pNext" aria-label="Seguinte"><i class="fa-solid fa-arrow-right"></i></button>
+        </footer>
+    </aside>
+
+    <!-- Scripts: planets.js (dados) → main.js (site) → solar-system.js (experiência interactiva) -->
+    <script src="js/planets.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/solar-system.js"></script>
+</body>
+
+</html>

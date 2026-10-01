@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="utf-8">
+    <title>SPACE PROJECT | Colégio Pitruca</title>
+    <meta name="description" content="Projecto educativo sobre o cosmos e o Sistema Solar desenvolvido para a Semana do Espaço do Colégio Pitruca.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fontes (Exo 2 para títulos, Inter para texto) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Estilos do site -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- data-page indica a página actual (usado por main.js para marcar o link activo) -->
+<body data-page="index.html">
+
+    <!-- Fundo de estrelas (desenhado por main.js) -->
+    <canvas id="stars" aria-hidden="true"></canvas>
+
+    <!-- Barra de navegação (preenchida por main.js) -->
+    <header id="nav"></header>
+
+    <main>
+
+        <!-- HERO: título e botão principal -->
+        <section class="hero">
+            <div>
+                <h1>SPACE<br>PROJECT</h1>
+                <p>Explore o cosmos. Conheça o nosso Sistema Solar.</p>
+                <a class="btn" href="sistema-solar.html">
+                    <i class="fa-solid fa-sun"></i> EXPLORAR O SISTEMA SOLAR
+                </a>
+            </div>
+
+            <!-- Terra decorativa no fundo do hero -->
+           <div class="earth" aria-hidden="true"></div> 
+        </section>
+
+        <!-- HISTÓRIA: texto introdutório + linha do tempo -->
+        <section class="reveal">
+            <div class="head">
+                <h2>Como a humanidade começou a explorar o cosmos</h2>
+                <p>
+                    Desde os primórdios da humanidade, olhar para o céu nocturno foi o primeiro passo
+                    para compreender o nosso lugar no mundo. O que começou com a simples observação das
+                    estrelas pelas grandes civilizações da Antiguidade — essencial para guiar plantios,
+                    navegações e calendários — transformou-se numa revolução científica com a invenção
+                    do telescópio por Galileu e a física moderna de Newton e Einstein.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <article class="card">
+                    <i class="fa-solid fa-moon"></i>
+                    <small>Antiguidade</small>
+                    <h3>Observação do céu</h3>
+                    <p>As grandes civilizações seguiam os astros para plantar, navegar e criar calendários.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <small>Século XVII</small>
+                    <h3>O telescópio de Galileu</h3>
+                    <p>Pela primeira vez, o céu passou a ser estudado com instrumentos.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-apple-whole"></i>
+                    <small>Séculos XVII–XVIII</small>
+                    <h3>Newton</h3>
+                    <p>A gravitação universal explicou o movimento dos planetas.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-atom"></i>
+                    <small>Século XX</small>
+                    <h3>Einstein</h3>
+                    <p>A física moderna mudou a nossa compreensão do espaço e do tempo.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-rocket"></i>
+                    <small>Era espacial</small>
+                    <h3>Exploração moderna</h3>
+                    <p>Satélites, sondas e missões levaram a ciência para além da Terra.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- IMPORTÂNCIA: aplicações práticas do estudo do espaço -->
+        <section class="reveal">
+            <div class="head">
+                <h2>Porque o espaço importa hoje</h2>
+                <p>
+                    Hoje, a exploração espacial vai muito além de responder a perguntas sobre a origem
+                    do universo. O estudo do cosmos impulsiona avanços tecnológicos cruciais para o
+                    nosso quotidiano.
+                </p>
+            </div>
+
+            <div class="apps">
+                <div class="card">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <h3>GPS</h3>
+                    <p>Posicionamento e navegação.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <h3>Comunicação por satélite</h3>
+                    <p>Comunicações globais.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-cloud-sun-rain"></i>
+                    <h3>Meteorologia</h3>
+                    <p>Previsões meteorológicas precisas.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <h3>Medicina</h3>
+                    <p>Inovações impulsionadas pela investigação espacial.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>Computação</h3>
+                    <p>Avanços tecnológicos ligados à ciência e ao espaço.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRODUÇÃO AO SISTEMA SOLAR -->
+        <section class="reveal">
+            <div class="head">
+                <h2>O Sistema Solar</h2>
+                <p>
+                    O Sistema Solar é uma estrutura planetária localizada na Via Láctea, composta pelo
+                    Sol e por todos os corpos celestes mantidos sob a sua atracção gravitacional.
+                    Formado há aproximadamente 4,6 mil milhões de anos, abrange uma vasta região do
+                    espaço organizada em torno dessa estrela central.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA: convite para explorar o Sistema Solar -->
+        <section class="solar-cta reveal">
+            <h2>O SISTEMA SOLAR</h2>
+            <p>Descubra os planetas, o Sol e as características que tornam cada mundo único.</p>
+            <a class="btn" href="sistema-solar.html">
+                <i class="fa-solid fa-globe"></i> EXPLORAR AGORA
+            </a>
+        </section>
+            
+        <!-- MINI-GAME: acesso à página do jogo da turma -->
+        <section class="reveal">
+            <div class="card game" style="text-align:center">
+                <i class="fa-solid fa-rocket"></i>
+                <h3>Desafio espacial</h3>
+                <p>Teste os seus conhecimentos sobre o Sistema Solar.</p>
+                <a class="btn" href="mini-game.html">
+                    <i class="fa-solid fa-gamepad"></i> RESPONDER AO DESAFIO
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé (preenchido por main.js) -->
+    <footer id="footer"></footer>
+
+    <!-- Scripts: planets.js (dados) deve carregar antes de main.js -->
+    <script src="js/planets.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
