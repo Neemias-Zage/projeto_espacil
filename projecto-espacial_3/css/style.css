@@ -1,0 +1,589 @@
+/* ==========================================================
+   PROJECTO ESPACIAL — estilos globais
+   Usados por todas as páginas
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   VARIÁVEIS: cores, raio e fontes do design system
+   ---------------------------------------------------------- */
+:root {
+    --bg: #050510;                      /* fundo base */
+    --bg2: #0b1030;
+    --card: #0d1024;                    /* fundo dos cartões */
+    --line: rgba(129, 140, 248, .18);   /* linhas e bordas subtis */
+    --txt: #f4f6ff;                     /* texto principal */
+    --mut: #9aa3c7;                     /* texto secundário */
+    --ind: #6366f1;                     /* índigo (acento principal) */
+    --vio: #a78bfa;                     /* violeta */
+    --cyan: #22d3ee;                    /* ciano (detalhes) */
+    --sol: #fbbf24;                     /* dourado solar */
+    --r: 16px;                          /* raio dos cartões */
+    --fh: "Exo 2", sans-serif;          /* fonte dos títulos */
+    --fb: "Inter", sans-serif;          /* fonte do texto */
+}
+
+
+/* ----------------------------------------------------------
+   BASE
+   ---------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: radial-gradient(120% 60% at 50% 0, #141a4a 0, var(--bg) 60%) fixed;
+    color: var(--txt);
+    font: 16px/1.65 var(--fb);
+    min-height: 100vh;
+    transition: background .8s;
+}
+
+/* Canvas das estrelas: fica atrás de tudo e não bloqueia cliques */
+#stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Foco visível para navegação por teclado */
+:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fh);
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+
+/* ----------------------------------------------------------
+   NAVEGAÇÃO (fixa no topo)
+   ---------------------------------------------------------- */
+#nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem 5vw;
+    background: rgba(5, 5, 16, .7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    font: 700 1rem var(--fh);
+    letter-spacing: .04em;
+}
+
+.brand i {
+    color: var(--ind);
+    margin-right: .4rem;
+}
+
+#nav nav {
+    display: flex;
+    gap: .3rem;
+}
+
+#nav nav a {
+    padding: .5rem .9rem;
+    border-radius: 99px;
+    color: var(--mut);
+    font-size: .9rem;
+    transition: .25s;
+}
+
+#nav nav a i {
+    margin-right: .4rem;
+}
+
+/* Hover e página activa (aria-current definido por main.js) */
+#nav nav a:hover,
+#nav nav a[aria-current] {
+    color: #fff;
+    background: rgba(99, 102, 241, .22);
+}
+
+
+/* ----------------------------------------------------------
+   LAYOUT E BOTÃO
+   ---------------------------------------------------------- */
+main {
+    padding-top: 4.5rem;    /* espaço para a navegação fixa */
+}
+
+section {
+    padding: 5rem 5vw;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.btn {
+    display: inline-flex;
+    gap: .6rem;
+    align-items: center;
+    padding: .9rem 1.6rem;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--ind), var(--vio));
+    font: 700 .95rem var(--fh);
+    letter-spacing: .05em;
+    box-shadow: 0 0 30px rgba(99, 102, 241, .4);
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 44px rgba(139, 92, 246, .6);
+}
+
+
+/* ----------------------------------------------------------
+   HOME: hero
+   ---------------------------------------------------------- */
+.hero {
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    place-items: center;
+    text-align: center;
+    position: relative;
+    max-width: none;
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* Título com degradê (branco → violeta) */
+.hero h1 {
+    font-size: clamp(2.6rem, 9vw, 6rem);
+    background: linear-gradient(180deg, #fff, #a5b4fc 70%, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero > div:first-child {
+    width: min(100%, 34rem);
+    padding-inline: 1rem;
+}
+
+.hero p {
+    max-width: 34rem;
+    width: 100%;
+    margin: 1.2rem auto 2rem;
+    color: var(--mut);
+    font-size: 1.15rem;
+}
+
+/* Terra a emergir na parte inferior do hero */
+.hero .earth {
+    position: absolute;
+    bottom: -38vmin;
+    left: 50%;
+    width: 90vmin;
+    height: 90vmin;
+    margin-left: -45vmin;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 8%, #7dd3fc 0, #1d4ed8 8%, #0b1c5c 30%, #02040f 62%);
+    box-shadow: 0 -10px 70px rgba(56, 189, 248, .55), inset 0 12px 40px rgba(125, 211, 252, .4);
+    z-index: -1;
+}
+
+
+/* ----------------------------------------------------------
+   HOME: secções de conteúdo
+   ---------------------------------------------------------- */
+
+/* Cabeçalho de secção (título + texto) */
+.head {
+    max-width: 40rem;
+    margin-bottom: 2.5rem;
+}
+
+.head h2 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin-bottom: .8rem;
+}
+
+.head p {
+    color: var(--mut);
+}
+
+/* Grelhas responsivas: as colunas ajustam-se à largura disponível */
+.timeline {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.apps {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+/* Cartão (linha do tempo, aplicações, mini-game) */
+.card {
+    background: linear-gradient(160deg, rgba(99, 102, 241, .1), var(--card) 45%);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 1.4rem;
+    transition: .3s;
+}
+
+.card:hover {
+    border-color: rgba(167, 139, 250, .5);
+}
+
+.card i {
+    color: var(--vio);
+    font-size: 1.3rem;
+    margin-bottom: .8rem;
+    display: block;
+}
+
+.card small {
+    color: var(--cyan);
+    font-weight: 600;
+}
+
+.card h3 {
+    font-size: 1.15rem;
+    margin: .2rem 0 .5rem;
+}
+
+.card p {
+    color: var(--mut);
+    font-size: .93rem;
+}
+
+/* Convite para explorar o Sistema Solar */
+.solar-cta {
+    text-align: center;
+    background: radial-gradient(60% 100% at 50% 0, rgba(251, 191, 36, .14), transparent), var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    max-width: 1000px;
+}
+
+.solar-cta h2 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+}
+
+.solar-cta p {
+    color: var(--mut);
+    margin: .8rem auto 1.6rem;
+    max-width: 34rem;
+}
+
+
+/* ----------------------------------------------------------
+   ANIMAÇÃO DE ENTRADA
+   .reveal começa invisível; main.js adiciona .in ao entrar no ecrã
+   ---------------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .7s, transform .7s;
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* ----------------------------------------------------------
+   RODAPÉ
+   ---------------------------------------------------------- */
+#footer {
+    text-align: center;
+    padding: 3rem 5vw;
+    border-top: 1px solid var(--line);
+    color: var(--mut);
+    font-size: .9rem;
+}
+
+#footer strong {
+    font: 700 1.1rem var(--fh);
+    color: #fff;
+}
+
+#footer div {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#footer div a:hover {
+    color: #fff;
+}
+
+
+/* ----------------------------------------------------------
+   PÁGINAS SECUNDÁRIAS: título, mini-game e créditos
+   ---------------------------------------------------------- */
+.page-title {
+    text-align: center;
+    padding-top: 4rem;
+}
+
+.page-title h1 {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+}
+
+.page-title p {
+    color: var(--mut);
+}
+
+/* Mini-game */
+.game {
+    text-align: center;
+    max-width: 44rem;
+}
+
+.game > i {
+    font-size: 4rem;
+    color: var(--vio);
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 24px var(--ind));
+}
+
+.game p {
+    color: var(--mut);
+    margin: 1rem 0 2rem;
+}
+
+#quiz-progress {
+    margin: 1.5rem 0 .5rem;
+    color: var(--cyan);
+    font-weight: 600;
+}
+
+#quiz-question {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+#quiz-answers {
+    display: grid;
+    gap: .65rem;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+.quiz-answer {
+    padding: .8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(99, 102, 241, .12);
+    color: var(--txt);
+    font: 500 1rem var(--fb);
+    cursor: pointer;
+}
+
+.quiz-answer:hover:not(:disabled) {
+    border-color: var(--cyan);
+}
+
+.quiz-answer.correct {
+    border-color: #4ade80;
+    background: rgba(74, 222, 128, .16);
+}
+
+.quiz-answer.incorrect {
+    border-color: #fb7185;
+    background: rgba(251, 113, 133, .16);
+}
+
+#quiz-feedback {
+    min-height: 1.65em;
+    margin: 1rem 0;
+}
+
+#quiz-explanation {
+    max-width: 34rem;
+    margin: 0 auto 1.2rem;
+    color: var(--mut);
+    font-size: .92rem;
+}
+
+#quiz-next,
+#quiz-restart {
+    border: 0;
+    color: #fff;
+}
+
+#quiz [hidden] {
+    display: none !important;
+}
+
+/* Créditos: lista de alunos em grelha */
+#students {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: .8rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+#students li {
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    font-weight: 500;
+}
+
+/* Número do aluno */
+#students span {
+    color: var(--ind);
+    font: 700 .85rem var(--fh);
+    margin-right: .8rem;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVO E ACESSIBILIDADE
+   ---------------------------------------------------------- */
+
+/* Telemóvel: só ícones na navegação */
+@media (max-width: 640px) {
+    main {
+        padding-top: 7rem;
+    }
+
+    #nav {
+        flex-wrap: wrap;
+        gap: .25rem;
+        padding: .55rem 4vw;
+    }
+
+    #nav .brand {
+        width: 100%;
+    }
+
+    #nav nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #nav nav a {
+        padding: .45rem .35rem;
+        font-size: .72rem;
+    }
+
+    #nav nav a i {
+        margin-right: .2rem;
+    }
+
+    .brand {
+        font-size: .85rem;
+    }
+
+    .brand .logo {
+        height: 1.5rem;
+    }
+
+    section {
+        padding: 3.5rem 6vw;
+    }
+
+    .hero > div:first-child {
+        width: calc(100vw - 3rem);
+        min-width: 0;
+        max-width: 34rem;
+        padding-inline: 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .hero p {
+        width: auto;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        font-size: 1rem;
+    }
+
+    .hero .btn {
+        display: inline-flex;
+        max-width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: .8rem 1rem;
+        font-size: .88rem;
+        line-height: 1.3;
+    }
+
+    .game {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .game h1 {
+        font-size: clamp(1.7rem, 8vw, 2.3rem);
+        overflow-wrap: anywhere;
+    }
+
+    #quiz-question {
+        overflow-wrap: anywhere;
+    }
+
+    .game .btn {
+        white-space: normal;
+        max-width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Quem prefere menos movimento: desliga animações e mostra tudo de imediato */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* ----------------------------------------------------------
+   LOGOTIPO (na navegação)
+   ---------------------------------------------------------- */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.brand .logo {
+    height: 1.9rem;
+    width: auto;
+}
