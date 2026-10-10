@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="utf-8">
+    <title>Foguete Espacial | Projecto Espacial</title>
+    <meta name="description" content="Explore o interior de um foguete espacial e acompanhe a sua descolagem.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050510">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Foguete Espacial | SPACE PROJECT">
+    <meta property="og:description" content="Descubra os sistemas que permitem a um foguete chegar ao espaço.">
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:image:alt" content="Logótipo do SPACE PROJECT">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Foguete Espacial | SPACE PROJECT">
+    <meta name="twitter:description" content="Descubra os sistemas que permitem a um foguete chegar ao espaço.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mini-game.css">
+</head>
+<body data-page="mini-game.html">
+    <canvas id="stars" aria-hidden="true"></canvas>
+    <header id="nav"></header>
+    <main>
+        <section class="game rocket-page reveal">
+            <p class="eyebrow">MISSÃO: EXPLORAR O ESPAÇO</p>
+            <h1>POR DENTRO DO FOGUETE</h1>
+            <p class="rocket-intro">Cada sistema tem uma função essencial. Explore as partes internas e prepare-se para a descolagem.</p>
+            <div class="rocket-scene" id="rocket-scene">
+                <div class="rocket-glow" aria-hidden="true"></div>
+                <div class="rocket-art" aria-label="Ilustração em corte de um foguete espacial com os seus componentes internos">
+                    <svg viewBox="0 0 240 560" role="img" aria-labelledby="rocket-title rocket-desc">
+                        <title id="rocket-title">Foguete espacial em corte</title>
+                        <desc id="rocket-desc">Foguete com cabine, tanques de combustível, computadores de bordo e motores visíveis no interior.</desc>
+                        <defs>
+                            <linearGradient id="rocket-body" x1="0" x2="1"><stop stop-color="#a5b4fc"/><stop offset=".48" stop-color="#f8fafc"/><stop offset="1" stop-color="#818cf8"/></linearGradient>
+                            <linearGradient id="rocket-fire" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff7ad"/><stop offset=".35" stop-color="#fb923c"/><stop offset="1" stop-color="#ef4444" stop-opacity="0"/></linearGradient>
+                            <clipPath id="rocket-window"><path d="M120 32C151 66 160 101 160 156H80C80 101 89 66 120 32Z"/></clipPath>
+                        </defs>
+                        <g class="rocket-exhaust"><path d="M88 440Q93 520 120 558Q147 520 152 440Z" fill="url(#rocket-fire)"/><path d="M106 440Q109 487 120 512Q131 487 134 440Z" fill="#fff7ad" opacity=".9"/></g>
+                        <path d="M120 24C158 65 173 112 173 185V438H67V185C67 112 82 65 120 24Z" fill="url(#rocket-body)" stroke="#c7d2fe" stroke-width="3"/>
+                        <path d="M120 32C151 66 160 101 160 156H80C80 101 89 66 120 32Z" fill="#25295f" stroke="#c4b5fd" stroke-width="3"/>
+                        <g clip-path="url(#rocket-window)">
+                            <path d="M90 112Q120 93 150 112V160H90Z" fill="#3b82f6" opacity=".35"/>
+                            <circle cx="120" cy="93" r="12" fill="#22d3ee" opacity=".8"/>
+                            <path d="M80 157H160V165H80Z" fill="#818cf8"/>
+                        </g>
+                        <path d="M83 173H157V260H83Z" fill="#171b46" stroke="#818cf8" stroke-width="2"/>
+                        <path d="M94 188H146V222H94Z" fill="#312e81" stroke="#a5b4fc"/>
+                        <path d="M98 194H142M98 202H134M98 210H139" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="105" cy="239" r="5" fill="#34d399"/><circle cx="120" cy="239" r="5" fill="#fbbf24"/><circle cx="135" cy="239" r="5" fill="#fb7185"/>
+                        <path d="M83 271H157V354H83Z" fill="#7c3aed" stroke="#c4b5fd" stroke-width="2"/>
+                        <path d="M89 285H151V342H89Z" fill="#a855f7" opacity=".65"/>
+                        <path d="M94 299H146M94 310H146M94 321H146" stroke="#f0abfc" stroke-width="2" opacity=".8"/>
+                        <path d="M85 365H155V420H85Z" fill="#0891b2" stroke="#67e8f9" stroke-width="2"/>
+                        <path d="M92 375H148V405H92Z" fill="#164e63"/>
+                        <path d="M99 382H141M99 390H141M99 398H134" stroke="#67e8f9" stroke-width="2"/>
+                        <path d="M67 316L25 390L67 373ZM173 316L215 390L173 373Z" fill="#6366f1" stroke="#a5b4fc" stroke-width="2"/>
+                        <path d="M84 438H156L146 465H94Z" fill="#475569" stroke="#cbd5e1" stroke-width="2"/>
+                        <path d="M100 443H140L134 462H106Z" fill="#111827"/>
+                        <path d="M67 184H173M67 263H173M67 359H173M67 425H173" stroke="#334155" stroke-width="4"/>
+                    </svg>
+                </div>
+                <div class="rocket-facts" aria-label="Componentes internos do foguete">
+                    <article class="rocket-fact fact-cabin"><span class="fact-number">01</span><div><h2>Cabine</h2><p>Transporta astronautas ou carga protegida durante a viagem.</p></div></article>
+                    <article class="rocket-fact fact-computer"><span class="fact-number">02</span><div><h2>Computadores de bordo</h2><p>Orientam o foguete e acompanham os sistemas de voo.</p></div></article>
+                    <article class="rocket-fact fact-fuel"><span class="fact-number">03</span><div><h2>Tanques de combustível</h2><p>Armazenam o combustível e o oxigénio necessários à propulsão.</p></div></article>
+                    <article class="rocket-fact fact-engine"><span class="fact-number">04</span><div><h2>Motores</h2><p>Queimam combustível e expulsam gases para impulsionar o foguete.</p></div></article>
+                </div>
+                <span class="rocket-orbit orbit-one" aria-hidden="true"></span><span class="rocket-orbit orbit-two" aria-hidden="true"></span>
+            </div>
+            <button class="btn launch-action" id="launch" type="button"><i class="fa-solid fa-rocket" aria-hidden="true"></i> INICIAR DESCOLAGEM</button>
+        </section>
+    </main>
+    <footer id="footer"></footer>
+    <div id="launch-overlay" aria-hidden="true" aria-live="assertive" tabindex="-1">
+        <p>Preparar para a descolagem...</p>
+        <div class="launch-rocket" aria-hidden="true">
+            <svg viewBox="0 0 80 160" role="presentation">
+                <defs><linearGradient id="launch-flame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#fbbf24"/><stop offset="1" stop-color="#ef4444" stop-opacity="0"/></linearGradient></defs>
+                <path class="rocket-flame" d="M31 111 Q40 158 49 111Z" fill="url(#launch-flame)"/><path d="M40 4C57 23 60 54 56 112H24C20 54 23 23 40 4Z" fill="#e5e9ff"/><path d="M40 4C49 17 54 32 55 48H25C26 32 31 17 40 4Z" fill="#6366f1"/><circle cx="40" cy="68" r="10" fill="#0b1030" stroke="#22d3ee" stroke-width="4"/><path d="M24 82L7 119l17-8ZM56 82l17 37-17-8Z" fill="#a78bfa"/><rect x="30" y="108" width="20" height="8" rx="3" fill="#4b5563"/>
+            </svg>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/mini-game.js"></script>
+</body>
+</html>
+

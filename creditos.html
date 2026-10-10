@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="utf-8">
+    <title>Créditos | Projecto Espacial</title>
+    <meta name="description" content="Projecto Espacial — Colégio Pitruca, Semana do Espaço.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050510">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Créditos | SPACE PROJECT">
+    <meta property="og:description" content="Conheça a turma por trás do SPACE PROJECT, desenvolvido para a Semana do Espaço.">
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:image:alt" content="Logótipo do SPACE PROJECT">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Créditos | SPACE PROJECT">
+    <meta name="twitter:description" content="Conheça a turma por trás do SPACE PROJECT, desenvolvido para a Semana do Espaço.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="creditos.html">
+
+    <!-- Fundo de estrelas (desenhado por main.js) -->
+    <canvas id="stars" aria-hidden="true"></canvas>
+
+    <!-- Barra de navegação (preenchida por main.js) -->
+    <header id="nav"></header>
+
+    <main>
+        <section>
+
+            <!-- Título da página e identificação da turma -->
+            <div class="page-title">
+                <h1>CRÉDITOS</h1>
+                <p>12ª Classe — Turma B — Informática</p>
+            </div>
+
+            <!-- Lista de alunos: os nomes vêm do array "students" em planets.js
+                 e são inseridos aqui por main.js (função initializeCredits) -->
+            <ol id="students" style="margin-top:2.5rem"></ol>
+
+        </section>
+    </main>
+
+    <!-- Rodapé (preenchido por main.js) -->
+    <footer id="footer"></footer>
+
+    <!-- Scripts: planets.js (dados) deve carregar antes de main.js -->
+    <script src="js/planets.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
